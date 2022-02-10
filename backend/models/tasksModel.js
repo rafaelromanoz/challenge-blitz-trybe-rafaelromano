@@ -4,7 +4,9 @@ const connection = require('./connection');
 const insertTaskModel = async (task) => {
   const connectionInstance = await connection();
   const { insertedId } = await connectionInstance.collection('tasks').insertOne({ ...task });
-  return insertedId;
+  return {
+    id: insertedId,
+  };
 };
 
 const updateTaskModel = async (id, task) => {

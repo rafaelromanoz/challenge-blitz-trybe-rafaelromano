@@ -1,4 +1,4 @@
-const { insertTaskModel } = require('../models/tasksModel');
+const { insertTaskModel, updateTaskModel } = require('../models/tasksModel');
 const { taskSchema } = require('../schemas/schemas');
 const { createErrorMessage } = require('../utils/functions');
 
@@ -16,6 +16,16 @@ const createTaskService = async (task) => {
   };
 };
 
+const updateTaskService = async (id, task) => {
+  validateTaskRequestData(task);
+  await updateTaskModel(id, task);
+  return {
+    id,
+    ...task,
+  };
+};
+
 module.exports = {
   createTaskService,
+  updateTaskService,
 };

@@ -20,8 +20,7 @@ const updateTaskModel = async (id, task) => {
 
 const deleteTaskModel = async (id) => {
   const connectionInstance = await connection();
-  const teste = connectionInstance.deleteOne({ _id: ObjectId(id) });
-  console.log('🚀 ~ file: tasksModel.js ~ line 22 ~ deleteTaskModel ~ teste', teste);
+  await connectionInstance.collection('tasks').deleteOne({ _id: ObjectId(id) });
 };
 
 module.exports = {

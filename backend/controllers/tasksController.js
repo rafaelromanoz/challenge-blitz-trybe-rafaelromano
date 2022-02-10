@@ -1,4 +1,5 @@
-const { createTaskService } = require('../services/tasksService');
+const { deleteTaskModel } = require('../models/tasksModel');
+const { createTaskService, updateTaskService } = require('../services/tasksService');
 
 const createTaskController = async (req, res, next) => {
   try {
@@ -12,9 +13,20 @@ const createTaskController = async (req, res, next) => {
 const updateTaskController = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const updatedTask = await createTaskService(id, req.body);
+    const updatedTask = await updateTaskService(id, req.body);
     return res.status(200).json(updatedTask);
   } catch (error) {
+    return next(error);
+  }
+};
+
+const deleteTaskController = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    await deleteTaskModel(id);
+    return res.status(200).json({});
+  } catch (error) {
+    console.log(error.message);
     return next(error);
   }
 };
@@ -22,4 +34,5 @@ const updateTaskController = async (req, res, next) => {
 module.exports = {
   createTaskController,
   updateTaskController,
+  deleteTaskController,
 };

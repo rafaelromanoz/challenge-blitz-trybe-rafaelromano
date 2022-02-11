@@ -1,10 +1,9 @@
 import React from 'react';
+import Tasks from './pages/Tasks';
 
 function App() {
   return (
-    <div>
-      <p>página inicial</p>
-    </div>
+    <Tasks />
   );
 }
 

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import moment from 'moment';
 import {
   Button,
   Container,
@@ -9,21 +8,17 @@ import {
   Options,
   Select,
 } from './TasksStyles';
-import api from '../api/axiosConfig';
-import validateInputAndSelect from '../functions';
+import {
+  onClickAddTaskToStateAndDb,
+  validateInputAndSelect,
+} from '../functions';
+
+import CardsTasks from '../components/CardsTasks';
 
 export default function Tasks() {
   const [task, setTask] = useState('');
   const [status, setStatus] = useState('');
-  function manipuleAndSendTaskToDb() {
-    const taskToDb = {
-      task,
-      date: moment().toDate().toString(),
-      status,
-    };
-    console.log(taskToDb);
-    api.post('/tasks', taskToDb);
-  }
+  const [listTasks, setListTasks] = useState([]);
   return (
     <Container>
       <Header>Digite uma task</Header>
@@ -38,10 +33,11 @@ export default function Tasks() {
       </InputsContainer>
       <Button
         disabled={validateInputAndSelect(task, status)}
-        onClick={() => manipuleAndSendTaskToDb()}
+        onClick={() => onClickAddTaskToStateAndDb(task, status, setListTasks)}
       >
         Salvar tarefa
       </Button>
+      <CardsTasks tasks={listTasks} />
     </Container>
   );
 }

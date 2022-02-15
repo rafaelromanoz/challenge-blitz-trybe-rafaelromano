@@ -1,28 +1,43 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { Button, Card } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
+import { AiOutlineEdit, AiOutlineDelete } from 'react-icons/ai';
 import { openModal } from '../features/task/modalSlice';
-// import CardContainer from './CardsTasksStyles';
+
 export default function CardsTasks({ tasks }) {
   const dispatch = useDispatch();
   return (
-    <div>
-      {tasks && tasks.map(({
-        task, date, status, id,
-      }) => (
-        <div key={id}>
-          <p>{task}</p>
-          <p>{date}</p>
-          <p>{status}</p>
-          <button type="button">Deletar</button>
-          <button
-            type="button"
-            onClick={() => dispatch(openModal())}
+    <div
+      style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+    >
+      {tasks &&
+        tasks.map(({ task, date, status, id }) => (
+          <Card
+            key={id}
+            style={{
+              width: '50%',
+              display: 'flex',
+              flexFlow: 'nowrap',
+              alignItems: 'center',
+            }}
           >
-            Editar
-          </button>
-        </div>
-      ))}
+            <Card.Body>
+              <Card.Title>{task}</Card.Title>
+              <Card.Subtitle>{date}</Card.Subtitle>
+              <p>{status}</p>
+              <Button
+                variant="warning"
+                onClick={() => dispatch(openModal())}
+              >
+                <AiOutlineDelete />
+              </Button>
+              <Button variant="danger">
+                <AiOutlineEdit />
+              </Button>
+            </Card.Body>
+          </Card>
+        ))}
     </div>
   );
 }

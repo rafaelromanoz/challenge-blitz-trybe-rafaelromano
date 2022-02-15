@@ -1,9 +1,9 @@
 const express = require('express');
 const cors = require('cors');
-const errorHandler = require('./middlewares/errorHandler');
-const tasksRouter = require('./routes/tasksRouter');
+const errorHandler = require('./src/middlewares/errorHandler');
+const tasksRouter = require('./src/routes/tasksRouter');
 
-const port = process.env.PORT || 3001;
+const port = 8080;
 
 const app = express();
 
@@ -15,4 +15,6 @@ app.use('/tasks', tasksRouter);
 
 app.use(errorHandler);
 
-app.listen(port, () => console.log(`Server escutando na porta ${port}!`));
+app.listen(port, () => {
+  console.log(`Server escutando na porta ${port}!`);
+});

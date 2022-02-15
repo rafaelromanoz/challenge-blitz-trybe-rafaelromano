@@ -14,13 +14,14 @@ async function manipuleAndSendTaskToDb(task, status) {
   return { id, taskToDb };
 }
 
-async function onClickAddTaskToStateAndDb(task, status, dispatch) {
+async function onClickAddTaskToStateAndDb(task, status, dispatch, refInput) {
   const { id, taskToDb } = await manipuleAndSendTaskToDb(task, status);
   const tasks = {
     ...taskToDb,
     id,
   };
   dispatch(addTasks(tasks));
+  refInput.current.value = '';
 }
 
 export {

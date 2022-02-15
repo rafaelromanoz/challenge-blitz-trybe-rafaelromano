@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Button,
   Container,
@@ -7,18 +8,18 @@ import {
   InputsContainer,
   Options,
   Select,
-} from './TasksStyles';
-import {
-  onClickAddTaskToStateAndDb,
-  validateInputAndSelect,
-} from '../functions';
+} from './HomeStyles';
+import { onClickAddTaskToStateAndDb } from '../functions/addTask';
+import validateInputAndSelect from '../functions/validates';
 
 import CardsTasks from '../components/CardsTasks';
+import EditCardModal from '../components/EditCardModal';
 
-export default function Tasks() {
+export default function Home() {
   const [task, setTask] = useState('');
   const [status, setStatus] = useState('');
-  const [listTasks, setListTasks] = useState([]);
+  const allTasks = useSelector(({ task: tasksFromGlobal }) => tasksFromGlobal.tasks);
+  const dispatch = useDispatch();
   return (
     <Container>
       <Header>Digite uma task</Header>
@@ -33,11 +34,12 @@ export default function Tasks() {
       </InputsContainer>
       <Button
         disabled={validateInputAndSelect(task, status)}
-        onClick={() => onClickAddTaskToStateAndDb(task, status, setListTasks)}
+        onClick={() => onClickAddTaskToStateAndDb(task, status, dispatch)}
       >
         Salvar tarefa
       </Button>
-      <CardsTasks tasks={listTasks} />
+      <EditCardModal />
+      <CardsTasks tasks={allTasks} />
     </Container>
   );
 }

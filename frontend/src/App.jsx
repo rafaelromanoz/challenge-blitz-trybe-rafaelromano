@@ -1,9 +1,9 @@
 import React from 'react';
-import Tasks from './pages/Tasks';
+import Home from './pages/Home';
 
 function App() {
   return (
-    <Tasks />
+    <Home />
   );
 }
 

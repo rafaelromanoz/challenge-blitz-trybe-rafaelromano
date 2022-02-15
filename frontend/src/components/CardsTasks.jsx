@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+
 // import CardContainer from './CardsTasksStyles';
 
 export default function CardsTasks({ tasks }) {
@@ -13,7 +14,11 @@ export default function CardsTasks({ tasks }) {
           <p>{date}</p>
           <p>{status}</p>
           <button type="button">Deletar</button>
-          <button type="button">Editar</button>
+          <button
+            type="button"
+          >
+            Editar
+          </button>
         </div>
       ))}
     </div>

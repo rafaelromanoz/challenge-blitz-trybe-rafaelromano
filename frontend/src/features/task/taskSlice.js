@@ -2,7 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   tasks: [],
-  editModal: false,
 };
 
 const taskSlice = createSlice({
@@ -12,12 +11,11 @@ const taskSlice = createSlice({
     addTasks: (state, action) => {
       state.tasks.push(action.payload);
     },
-    editModalSwitch: (state) => state.editModal,
   },
 });
 
-const { addTasks, editModal } = taskSlice.actions;
+const { addTasks, openModal, closeModal } = taskSlice.actions;
 
-export { addTasks, editModal };
+export { addTasks, openModal, closeModal };
 
 export default taskSlice.reducer;

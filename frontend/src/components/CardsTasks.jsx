@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-
+import { useDispatch } from 'react-redux';
+import { openModal } from '../features/task/modalSlice';
 // import CardContainer from './CardsTasksStyles';
-
 export default function CardsTasks({ tasks }) {
+  const dispatch = useDispatch();
   return (
     <div>
       {tasks && tasks.map(({
@@ -16,6 +17,7 @@ export default function CardsTasks({ tasks }) {
           <button type="button">Deletar</button>
           <button
             type="button"
+            onClick={() => dispatch(openModal())}
           >
             Editar
           </button>

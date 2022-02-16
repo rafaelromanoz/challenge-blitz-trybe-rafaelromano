@@ -20,6 +20,9 @@ const taskSlice = createSlice({
       const listTasks = state.tasks.filter(({ id }) => id !== action.payload);
       state.tasks = listTasks;
     },
+    orderTasksAction: (state, action) => {
+      state.tasks = action.payload;
+    },
     setIdForEdit: (state, action) => {
       state.idAndIndexTaskForEdit = action.payload;
     },
@@ -31,6 +34,7 @@ const {
   editTask,
   setIdForEdit,
   deleteTask,
+  orderTasksAction,
 } = taskSlice.actions;
 
 export {
@@ -38,6 +42,7 @@ export {
   editTask,
   setIdForEdit,
   deleteTask,
+  orderTasksAction,
 };
 
 export default taskSlice.reducer;

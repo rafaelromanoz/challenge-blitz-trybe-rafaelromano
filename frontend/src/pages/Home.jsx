@@ -9,6 +9,7 @@ import validateInputAndSelect from '../functions/validates';
 
 import CardsTasks from '../components/CardsTasks';
 import EditCardModal from '../components/ModalEditCard';
+import RadioSortsTasks from '../components/SortsTasks';
 
 export default function Home() {
   const [task, setTask] = useState('');
@@ -49,6 +50,7 @@ export default function Home() {
         </Button>
       </InputGroup>
       <EditCardModal />
+      <RadioSortsTasks />
       <CardsTasks tasks={allTasks} />
     </div>
   );

@@ -20,19 +20,22 @@ export default function Home() {
 
   return (
     <div>
-      <h1 style={{
-        display: 'flex',
-        justifyContent: 'center',
-        marginBottom: '20px',
-      }}
+      <h1
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          marginBottom: '20px',
+          marginTop: '20px',
+        }}
       >
-        Blitz Tybe Challenge
+        Blitz Trybe Challenge
       </h1>
       <InputGroup style={{ width: '60%', marginLeft: '275px' }}>
         <InputGroup.Text id="basic-addon">Digite uma task</InputGroup.Text>
         <FormControl
           style={{ width: '150px' }}
           onChange={({ target }) => setTask(target.value)}
+          data-testid="input-task"
           ref={refInput}
         />
         <Form.Select onChange={({ target }) => setStatus(target.value)}>

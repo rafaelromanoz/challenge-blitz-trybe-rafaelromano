@@ -19,5 +19,6 @@
     ],
     "rules": {
         "no-param-reassign": 0
-    }
+    },
+    "ignorePatterns": ["src/tests/*"]
 }

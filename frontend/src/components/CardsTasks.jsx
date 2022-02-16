@@ -11,8 +11,10 @@ export default function CardsTasks({ tasks }) {
     <div
       style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
     >
-      {tasks &&
-        tasks.map(({ task, date, status, id }) => (
+      {tasks
+        && tasks.map(({
+          task, date, status, id,
+        }) => (
           <Card
             key={id}
             style={{

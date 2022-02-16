@@ -16,14 +16,28 @@ const taskSlice = createSlice({
       const todo = action.payload;
       state.tasks[todo.indexTask] = todo;
     },
+    deleteTask: (state, action) => {
+      const listTasks = state.tasks.filter(({ id }) => id !== action.payload);
+      state.tasks = listTasks;
+    },
     setIdForEdit: (state, action) => {
       state.idAndIndexTaskForEdit = action.payload;
     },
   },
 });
 
-const { addTasks, editTask, setIdForEdit } = taskSlice.actions;
+const {
+  addTasks,
+  editTask,
+  setIdForEdit,
+  deleteTask,
+} = taskSlice.actions;
 
-export { addTasks, editTask, setIdForEdit };
+export {
+  addTasks,
+  editTask,
+  setIdForEdit,
+  deleteTask,
+};
 
 export default taskSlice.reducer;

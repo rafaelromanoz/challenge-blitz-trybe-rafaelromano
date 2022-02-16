@@ -4,6 +4,7 @@ import { Button, Card } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { AiOutlineEdit, AiOutlineDelete } from 'react-icons/ai';
 import { editTaskClick } from '../functions/editTask';
+import deleteTaskClick from '../functions/deleteTask';
 
 export default function CardsTasks({ tasks }) {
   const dispatch = useDispatch();
@@ -39,7 +40,10 @@ export default function CardsTasks({ tasks }) {
               >
                 <AiOutlineEdit />
               </Button>
-              <Button variant="danger">
+              <Button
+                variant="danger"
+                onClick={() => deleteTaskClick(id, dispatch)}
+              >
                 <AiOutlineDelete />
               </Button>
             </Card.Body>

@@ -18,9 +18,9 @@ const updateTaskModel = async (id, task) => {
     );
 };
 
-const deleteTaskModel = async (id) => {
+const deleteTaskModel = async (body) => {
   const connectionInstance = await connection();
-  await connectionInstance.collection('tasks').deleteOne({ _id: ObjectId(id) });
+  await connectionInstance.collection('tasks').deleteOne({ _id: ObjectId(body.id) });
 };
 
 module.exports = {

@@ -1,7 +1,9 @@
 import { deleteTask } from '../features/task/taskSlice';
+import api from '../api/apiConfig';
 
-function deleteTaskClick(index, dispatch) {
-  dispatch(deleteTask(index));
+async function deleteTaskClick(id, dispatch) {
+  await api.delete('/tasks', { data: { id } });
+  dispatch(deleteTask(id));
 }
 
 export default deleteTaskClick;

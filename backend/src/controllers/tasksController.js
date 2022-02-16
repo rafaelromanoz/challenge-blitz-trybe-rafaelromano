@@ -21,8 +21,7 @@ const updateTaskController = async (req, res, next) => {
 
 const deleteTaskController = async (req, res, next) => {
   try {
-    const { id } = req.params;
-    await deleteTaskModel(id);
+    await deleteTaskModel(req.body);
     return res.status(200).json({});
   } catch (error) {
     return next(error);

@@ -3,18 +3,23 @@ import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { AiOutlineEdit, AiOutlineDelete } from 'react-icons/ai';
-import { openModal } from '../features/task/modalSlice';
+import { editTaskClick } from '../functions/editTask';
 
 export default function CardsTasks({ tasks }) {
   const dispatch = useDispatch();
   return (
     <div
-      style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        marginTop: '20px',
+      }}
     >
       {tasks
         && tasks.map(({
           task, date, status, id,
-        }) => (
+        }, index) => (
           <Card
             key={id}
             style={{
@@ -30,12 +35,12 @@ export default function CardsTasks({ tasks }) {
               <p>{status}</p>
               <Button
                 variant="warning"
-                onClick={() => dispatch(openModal())}
+                onClick={() => editTaskClick(index, id, dispatch)}
               >
-                <AiOutlineDelete />
+                <AiOutlineEdit />
               </Button>
               <Button variant="danger">
-                <AiOutlineEdit />
+                <AiOutlineDelete />
               </Button>
             </Card.Body>
           </Card>

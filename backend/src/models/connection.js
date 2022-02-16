@@ -6,7 +6,7 @@ const OPTIONS = {
   useUnifiedTopology: true,
 };
 
-const mongodburl = 'mongodb://mongo:27017/mongo-test';
+const mongodburl = 'mongodb://localhost:27017/';
 
 let db = null;
 

@@ -4,7 +4,7 @@ const { createTaskController, updateTaskController, deleteTaskController } = req
 const tasksRouter = express.Router();
 
 tasksRouter.post('/', createTaskController);
-tasksRouter.put('/:id', updateTaskController);
+tasksRouter.put('/', updateTaskController);
 tasksRouter.delete('/:id', deleteTaskController);
 
 module.exports = tasksRouter;

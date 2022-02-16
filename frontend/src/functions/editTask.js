@@ -1,13 +1,14 @@
 import moment from 'moment';
 import { setIdForEdit, editTask } from '../features/task/taskSlice';
 import { openModal, closeModal } from '../features/task/modalSlice';
+import api from '../api/apiConfig';
 
 function editTaskClick(index, id, dispatch) {
   dispatch(setIdForEdit({ index, id }));
   dispatch(openModal());
 }
 
-function saveTaskEdit(indexTask, id, task, status, dispatch) {
+async function saveTaskEdit(indexTask, id, task, status, dispatch) {
   const toEdit = {
     task,
     status,
@@ -16,6 +17,7 @@ function saveTaskEdit(indexTask, id, task, status, dispatch) {
     id,
   };
   dispatch(editTask(toEdit));
+  await api.put('/tasks', toEdit);
   dispatch(closeModal());
 }
 

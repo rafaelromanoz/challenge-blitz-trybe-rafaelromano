@@ -12,8 +12,7 @@ const createTaskController = async (req, res, next) => {
 
 const updateTaskController = async (req, res, next) => {
   try {
-    const { id } = req.params;
-    const updatedTask = await updateTaskService(id, req.body);
+    const updatedTask = await updateTaskService(req.body);
     return res.status(200).json(updatedTask);
   } catch (error) {
     return next(error);

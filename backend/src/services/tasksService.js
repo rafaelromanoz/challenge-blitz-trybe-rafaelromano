@@ -16,11 +16,10 @@ const createTaskService = async (task) => {
   };
 };
 
-const updateTaskService = async (id, task) => {
-  validateTaskRequestData(task);
-  await updateTaskModel(id, task);
+const updateTaskService = async (task) => {
+  await updateTaskModel(task.id, task);
   return {
-    id,
+    id: task.id,
     ...task,
   };
 };

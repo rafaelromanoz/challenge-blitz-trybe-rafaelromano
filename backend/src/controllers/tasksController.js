@@ -1,5 +1,14 @@
-const { deleteTaskModel } = require('../models/tasksModel');
+const { deleteTaskModel, getAllTasksModel } = require('../models/tasksModel');
 const { createTaskService, updateTaskService } = require('../services/tasksService');
+
+const getAllTasksController = async (_req, res, next) => {
+  try {
+    const tasks = await getAllTasksModel();
+    return res.status(200).json(tasks);
+  } catch (error) {
+    return next(error);
+  }
+};
 
 const createTaskController = async (req, res, next) => {
   try {
@@ -32,4 +41,5 @@ module.exports = {
   createTaskController,
   updateTaskController,
   deleteTaskController,
+  getAllTasksController,
 };

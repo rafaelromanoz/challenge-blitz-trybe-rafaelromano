@@ -26,6 +26,9 @@ const taskSlice = createSlice({
     setIdForEdit: (state, action) => {
       state.idAndIndexTaskForEdit = action.payload;
     },
+    getTasksOnLoad: (state, action) => {
+      state.tasks = action.payload;
+    },
   },
 });
 
@@ -35,6 +38,7 @@ const {
   setIdForEdit,
   deleteTask,
   orderTasksAction,
+  getTasksOnLoad,
 } = taskSlice.actions;
 
 export {
@@ -43,6 +47,7 @@ export {
   setIdForEdit,
   deleteTask,
   orderTasksAction,
+  getTasksOnLoad,
 };
 
 export default taskSlice.reducer;

@@ -1,13 +1,22 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, {
+  useEffect,
+} from 'react';
 import { Button, Card } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { AiOutlineEdit, AiOutlineDelete } from 'react-icons/ai';
+import { getTasksOnLoad } from '../features/task/taskSlice';
 import { editTaskClick } from '../functions/editTask';
 import deleteTaskClick from '../functions/deleteTask';
+import api from '../api/apiConfig';
 
 export default function CardsTasks({ tasks }) {
   const dispatch = useDispatch();
+  useEffect(async () => {
+    const { data } = await api.get('/tasks');
+    dispatch(getTasksOnLoad(data));
+  }, []);
+
   return (
     <div
       style={{
@@ -59,7 +68,7 @@ CardsTasks.propTypes = {
       task: PropTypes.string.isRequired,
       date: PropTypes.string.isRequired,
       status: PropTypes.string.isRequired,
-      id: PropTypes.string.isRequired,
+      id: PropTypes.string,
     }),
   ).isRequired,
 };

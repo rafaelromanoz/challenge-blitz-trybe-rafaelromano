@@ -78,41 +78,6 @@ cd frontend
 npm test
 ```
 
-### Rotas da aplicação
-
-Na rota /user é possível cadastrar um usuário, envie um json no seguinte formato, após o cadastro é gerado um token que com ele é possível fazer depósitos ou transferências. Copie o token e coloque no header 'authorization' das próximas requisições.
-```
-http://localhost:3000/user
-```
-```json
-{
-  "name": "Jose Giovani Oliveira",
-  "cpf": "114.684.207-08"
-}
-```
-Para depositar é necessário um CPF válido cadastrado antes e o seguinte JSON no corpo da requisição.
-```
-http://localhost:3000/account/deposit
-```
-```json
-{
-  "cpf": "114.684.207-08",
-  "deposit": 3000
-}
-```
-Na rota de transferência entre as contas, como a operação precisa ser atômica respeitando o princípio  ACID (atomic, consistency, isolation, durability) foi utilizada do método transaction do TypeORM, as contas não podem ter valor negativo então só é possível transferir se o usuário possui saldo, e também por questões de regra de negócio não é possível transferir um valor maior que 2000, para transferir dinheiro entre as contas o JSON aceito é nesse padrão:
-
-```
-http://localhost:3000/account/transfer
-```
-
-```json
-{
-  "cpfOrigin": "115.987.555-98",
-  "quantity":  188,
-  "cpfDestiny": "114.684.207-08"
-}
-```
 
 ## 📦 Desenvolvimento
 
@@ -122,13 +87,14 @@ A aplicação foi criado com base na arquitetura MERN (MongoDB, Express, React, 
 
 Para confecção da API foi utilizado do framework Express e Node.js.
 
-No frontend foi utilizado do framework react na interação com o usuário, e para estilização foi utilizado a biblioteca CSS, Bootstrap React
+No frontend foi utilizado do framework react na interação com o usuário, e para estilização foi utilizado a biblioteca CSS, Bootstrap React, no gerenciamento de estado foi utilizado o Redux Toolkit.
 
 Para padronização e qualidade de código foi utilizado o ESLint e o editorconfig.
 
 ## 🛠️ Construído com
 
-* [JavaScript](javascript.com) - Linguagem,
+* [JavaScript](javascript.com) - Linguagem
+* [ReduxToolkit](https://redux-toolkit.js.org/) - Gerenciamento de estado
 * [Bootstrap](https://react-bootstrap.github.io/) - Biblioteca CSS
 * [MongoDB](https://www.mongodb.com/) - Banco de Dados
 * [Express](https://expressjs.com/pt-br/) - Criação API

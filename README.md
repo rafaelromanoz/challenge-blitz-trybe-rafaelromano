@@ -13,7 +13,7 @@ O projeto é totalmente Dockerizado, se você possuir docker e docker compose in
 ```
 docker-compose up
 ```
-## Rodando projeto com os containers 
+#### Rodando projeto com os containers 
 
 Após os containers estarem prontos o projeto estará disponível na url
 
@@ -21,7 +21,7 @@ Após os containers estarem prontos o projeto estará disponível na url
 http://localhost:3000/
 ```
 
-## Atenção!
+### Atenção!
 
 Se não possuir o docker e docker compose é alterar a url de conexão do banco de dados, para utilizar o MongoDB localmente.
 
@@ -37,51 +37,48 @@ const mongodburl = 'mongodb://localhost:27017/';
 
 Para executar o projeto sem o Docker, é necessário seguir os passos abaixo:
 
-# Instalando dependencias do backend.
+#### Instalando dependencias do backend.
 ```
 cd backend
 npm install
 ```
-# Instalando dependencias do frontend.
+#### Instalando dependencias do frontend.
 ```
 cd frontend
 npm install
 ```
-<strong>Rode o servidor e o cliente React</strong>
-
-# Rodando o servidor
+#### Executando o servidor
 
 ```
 cd backend
 npm start
 ```
 
-# Rodando cliente React
+#### Executando cliente React
 
 ```
 cd frontend
 npm start
 ```
 
-## ⚙️ Executando os testes
+### ⚙️ Executando os testes
 
-<strong>Rodando os testes</strong>
 
-# Testes do servidor
+#### Testes do servidor
 
 ```
 cd backend
 npm test
 ```
 
-# Testes do frontend
+#### Testes do frontend
 
 ```
 cd frontend
 npm test
 ```
 
-## Rotas da aplicação
+### Rotas da aplicação
 
 Na rota /user é possível cadastrar um usuário, envie um json no seguinte formato, após o cadastro é gerado um token que com ele é possível fazer depósitos ou transferências. Copie o token e coloque no header 'authorization' das próximas requisições.
 ```

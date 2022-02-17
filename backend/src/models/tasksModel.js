@@ -9,11 +9,11 @@ const insertTaskModel = async (task) => {
   };
 };
 
-const updateTaskModel = async (id, task) => {
+const updateTaskModel = async (task) => {
   const connectionInstance = await connection();
   await connectionInstance.collection('tasks')
     .updateOne(
-      { _id: ObjectId(id) },
+      { _id: ObjectId(task.id) },
       { $set: { ...task } },
     );
 };
